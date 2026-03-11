@@ -1,0 +1,5 @@
+# Clean URLs for exercise pages
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9-]+)$ $1.html [L]

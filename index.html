@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Training Exercise Library - 1,000+ searchable horse training exercises for every discipline. Flatwork, jumping, groundwork, western, trail, and barrel racing exercises with step-by-step instructions.">
+  <meta name="keywords" content="horse training exercises, dressage exercises, jumping exercises, groundwork, western riding, barrel racing drills, equine training, Schneider Saddlery">
+  <meta name="author" content="Schneider Saddlery">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Training Exercise Library - 1,000+ Horse Training Exercises">
+  <meta property="og:description" content="Searchable database of horse training exercises by discipline. Browse, filter, and save exercises for flatwork, jumping, groundwork, western, trail, and barrel racing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.trainingexerciselibrary.com/">
+  <title>Training Exercise Library | 1,000+ Horse Training Exercises by Discipline</title>
+  <link rel="canonical" href="https://www.trainingexerciselibrary.com/">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <meta property="og:image" content="https://www.trainingexerciselibrary.com/images/og-image.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Training Exercise Library",
+    "url": "https://www.trainingexerciselibrary.com/",
+    "description": "1,000+ searchable horse training exercises for every discipline. Flatwork, jumping, groundwork, western, trail, and barrel racing exercises with step-by-step instructions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Schneider Saddlery",
+      "url": "https://www.sstack.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    Part of the Schneider Saddlery Equine Network &mdash; Shop <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 3h-3V1h-2v2H8V1H6v2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H3V9h18v12zM3 7V5h18v2H3zm4 4h4v4H7v-4z"/></svg>
+        </div>
+        <h1>Training Exercise Library<span>By Schneider Saddlery</span></h1>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="header-nav">
+        <a href="index.html">Exercises</a>
+        <a href="about.html">About</a>
+        <a href="https://www.sstack.com" target="_blank" rel="noopener">Shop sstack.com</a>
+        <a href="#" class="btn-favorites">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          Favorites
+          <span class="favorites-count">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>1,000+ Training Exercises<br>for <span class="highlight">Every Discipline</span></h2>
+      <p>Browse our curated library of horse training exercises. Filter by discipline, skill level, and focus area. Save your favorites and build your training program.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-number">1,000+</span>
+          <span class="stat-label">Exercises</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number">6</span>
+          <span class="stat-label">Disciplines</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Skill Levels</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="search-row">
+        <div class="search-input-wrap">
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search exercises by name, focus area, or equipment..." aria-label="Search exercises">
+        </div>
+      </div>
+      <div class="filter-row">
+        <select id="filterDiscipline" class="filter-select" aria-label="Filter by discipline">
+          <option value="">All Disciplines</option>
+          <option value="flatwork">Flatwork / Dressage</option>
+          <option value="jumping">Jumping</option>
+          <option value="groundwork">Groundwork</option>
+          <option value="western">Western</option>
+          <option value="trail">Trail / General</option>
+          <option value="speed">Speed / Barrel Racing</option>
+        </select>
+        <select id="filterLevel" class="filter-select" aria-label="Filter by skill level">
+          <option value="">All Levels</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+        <select id="filterFocus" class="filter-select" aria-label="Filter by focus area">
+          <option value="">All Focus Areas</option>
+          <option value="flatwork">Flatwork</option>
+          <option value="jumping">Jumping</option>
+          <option value="groundwork">Groundwork</option>
+          <option value="trail">Trail</option>
+          <option value="speed">Speed</option>
+          <option value="collection">Collection</option>
+          <option value="lateral">Lateral Work</option>
+          <option value="transitions">Transitions</option>
+          <option value="confidence">Confidence</option>
+          <option value="conditioning">Conditioning</option>
+        </select>
+        <select id="filterTime" class="filter-select" aria-label="Filter by time">
+          <option value="">Any Duration</option>
+          <option value="15">15 min or less</option>
+          <option value="30">16 - 30 min</option>
+          <option value="45">31 - 45 min</option>
+          <option value="60">46 - 60 min</option>
+        </select>
+        <button class="filter-clear">Clear Filters</button>
+      </div>
+      <div class="results-info" id="resultsInfo">Showing <strong>20</strong> of 20 exercises</div>
+    </div>
+  </section>
+
+  <!-- Exercise Grid -->
+  <section class="exercises-section">
+    <div class="container">
+      <div class="exercises-grid" id="exercisesGrid">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="pagination" id="paginationControls"></div>
+    </div>
+  </section>
+
+  <!-- Save Favorites Email Gate Modal -->
+  <div class="modal-overlay" id="favoritesModal">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-header">
+        <h3>Save Your Favorites</h3>
+        <p>Enter your email to save and export your favorite exercises.</p>
+      </div>
+      <div class="modal-body">
+        <form id="favoritesForm">
+          <div class="form-group">
+            <label for="favName">Your Name</label>
+            <input type="text" id="favName" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label for="favEmail">Email Address *</label>
+            <input type="email" id="favEmail" placeholder="you@example.com" required>
+          </div>
+          <button type="submit" class="btn-submit">Save &amp; Continue</button>
+          <p class="modal-note">We respect your privacy. Unsubscribe anytime. See our <a href="privacy.html">Privacy Policy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email Exercise Modal -->
+  <div class="modal-overlay" id="emailExerciseModal">
+    <div class="modal" style="position:relative;">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-header">
+        <h3>Email This Exercise</h3>
+        <p>Get step-by-step instructions, tips, and variations delivered to your inbox.</p>
+      </div>
+      <div class="modal-body">
+        <form id="emailExerciseForm">
+          <div style="position:absolute;left:-9999px;" aria-hidden="true">
+            <input type="text" id="emailExHp" name="email_ex_hp" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="emailExName">Your Name</label>
+            <input type="text" id="emailExName" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label for="emailExEmail">Email Address *</label>
+            <input type="email" id="emailExEmail" placeholder="you@example.com" required>
+          </div>
+          <button type="submit" class="btn-submit">Send Exercise</button>
+          <p class="modal-note">We respect your privacy. Unsubscribe anytime. See our <a href="privacy.html">Privacy Policy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit an Exercise -->
+  <section class="submit-section" id="submitExercise">
+    <div class="container submit-inner">
+      <h2>Submit an Exercise</h2>
+      <p class="subtitle">Share your favorite training exercise with the community. Approved exercises will be added to the library.</p>
+      <form class="submit-form" id="submitExerciseForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="subName">Your Name *</label>
+            <input type="text" id="subName" required placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label for="subEmail">Email *</label>
+            <input type="email" id="subEmail" required placeholder="jane@example.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subTitle">Exercise Title *</label>
+          <input type="text" id="subTitle" required placeholder="e.g., Serpentine Transitions">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="subDiscipline">Discipline</label>
+            <select id="subDiscipline">
+              <option value="Flatwork / Dressage">Flatwork / Dressage</option>
+              <option value="Jumping">Jumping</option>
+              <option value="Groundwork">Groundwork</option>
+              <option value="Western">Western</option>
+              <option value="Trail / General">Trail / General</option>
+              <option value="Speed / Barrel Racing">Speed / Barrel Racing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="subLevel">Skill Level</label>
+            <select id="subLevel">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subDescription">Exercise Description *</label>
+          <textarea id="subDescription" required placeholder="Describe the exercise step-by-step. Include equipment needed, time required, focus areas, and any tips for success."></textarea>
+        </div>
+        <button type="submit" class="btn-submit-exercise">Submit Exercise for Review</button>
+      </form>
+      <div class="submit-success">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <h3>Exercise Submitted!</h3>
+        <p>Thank you for contributing. Our team will review your exercise and add it to the library if approved.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">How do I use the Training Exercise Library?</button>
+          <div class="faq-answer">Browse exercises by using the filter bar at the top of the page. You can filter by discipline (dressage, jumping, western, etc.), skill level (beginner, intermediate, advanced), focus area, and time required. Click "View Exercise" on any card to see full step-by-step instructions, common mistakes, and variations.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Are these exercises suitable for all horses?</button>
+          <div class="faq-answer">Exercises are labeled by skill level. Beginner exercises are suitable for green horses and novice riders. Intermediate exercises assume basic training is established. Advanced exercises require experienced horses and riders. Always use your judgment and consult with a trainer if unsure about an exercise for your specific horse.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Can I save exercises for later?</button>
+          <div class="faq-answer">Yes! Click the heart icon on any exercise card to save it to your favorites. You will be asked for your email address the first time to enable the favorites feature. Your favorites are saved locally on your device and can be accessed anytime by clicking the "Favorites" button in the header.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How can I submit my own training exercise?</button>
+          <div class="faq-answer">Scroll down to the "Submit an Exercise" section on this page. Fill out the form with your exercise details including the title, discipline, skill level, and a detailed description. Our editorial team reviews all submissions and will add approved exercises to the library.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Where can I buy the equipment mentioned in exercises?</button>
+          <div class="faq-answer">Equipment links within each exercise connect directly to <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a>, the Schneider Saddlery online store. Schneider Saddlery carries a full range of training equipment, tack, and riding gear for all disciplines.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How often are new exercises added?</button>
+          <div class="faq-answer">We add new exercises regularly based on trainer contributions, seasonal relevance, and community requests. Sign up for our newsletter to be notified when new exercises are added to the library.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Is the Training Exercise Library free?</button>
+          <div class="faq-answer">Yes, the Training Exercise Library is completely free to use. It is provided as a resource by Schneider Saddlery as part of our commitment to supporting the equestrian community. No subscription or payment is required.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email CTA -->
+  <section class="email-cta">
+    <div class="container">
+      <h2>Get New Exercises in Your Inbox</h2>
+      <p>Join thousands of trainers who receive weekly exercise ideas and training tips.</p>
+      <form class="email-cta-form" id="emailCtaForm">
+        <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+        <button type="submit">Subscribe Free</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Training Exercise Library</h3>
+          <p>A searchable database of horse training exercises for every discipline. From flatwork fundamentals to advanced jumping gymnastics, find the perfect exercise for your next ride.</p>
+          <p class="footer-tagline">Horses Define Who We Are&trade;</p>
+        </div>
+        <div class="footer-col">
+          <h4>Disciplines</h4>
+          <ul>
+            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='flatwork';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Flatwork / Dressage</a></li>
+            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='jumping';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Jumping</a></li>
+            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='groundwork';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Groundwork</a></li>
+            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='western';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Western</a></li>
+            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='trail';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Trail / General</a></li>
+            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='speed';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Speed / Barrel Racing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#submitExercise">Submit an Exercise</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://www.sstack.com" target="_blank" rel="noopener">Shop sstack.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Powered by <a href="https://www.sstack.com" target="_blank" rel="noopener">Schneider Saddlery</a> | <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a></span>
+        <span>&copy; 2026 TrainingExerciseLibrary.com. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
