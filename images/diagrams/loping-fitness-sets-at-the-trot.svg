@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-r" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2980B9"/>
+    </marker>
+    <pattern id="sand" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#F5EFE0"/>
+      <circle cx="1" cy="1" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+      <circle cx="3" cy="3" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <text x="200" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">Loping Fitness Sets at the Trot</text>
+  <text x="200" y="48" text-anchor="middle" font-size="10" fill="#6B6B6B">Barrel Exercise Setup</text>
+  <rect x="60" y="60" width="280" height="360" rx="4" fill="url(#sand)" stroke="#8B7D6B" stroke-width="2"/>
+  <rect x="68" y="68" width="264" height="344" rx="2" fill="none" stroke="#A0937D" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="200.0" y1="68" x2="200.0" y2="412" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <line x1="68" y1="240.0" x2="332" y2="240.0" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <text x="200.0" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">A</text>
+  <text x="200.0" y="436" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">C</text>
+  <text x="46" y="119.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">F</text>
+  <text x="46" y="245.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">B</text>
+  <text x="46" y="371.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">M</text>
+  <text x="354" y="119.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">K</text>
+  <text x="354" y="245.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">E</text>
+  <text x="354" y="371.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">H</text>
+  <text x="212.0" y="236.0" font-size="12" font-weight="600" fill="#999">X</text>
+  <circle cx="200.0" cy="240.0" r="10" fill="#2980B9" stroke="#1B2A4A" stroke-width="1.5" opacity="0.8"/>
+  <circle cx="200.0" cy="240.0" r="4" fill="#FFFFFF" opacity="0.5"/>
+  <text x="200.0" y="264.0" text-anchor="middle" font-size="9" fill="#2980B9" font-weight="600">barrel</text>
+  <circle cx="200.0" cy="240.0" r="40" fill="none" stroke="#2D5A3D" stroke-width="3" stroke-dasharray="10,5" opacity="0.85"/>
+  <path d="M 191.3,190.8 A 50,50 0 0,1 247.0,222.9" fill="none" stroke="#2D5A3D" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="200.0" y1="360.0" x2="200.0" y2="290.0" stroke="#2D5A3D" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#ah)"/>
+  <circle cx="200.0" cy="370.0" r="6" fill="#2D5A3D" opacity="0.85"/>
+  <line x1="60" y1="460" x2="78" y2="460" stroke="#2D5A3D" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="82" y="464" font-size="9" fill="#6B6B6B">Circle path</text>
+  <circle cx="157.5" cy="460" r="6" fill="#2980B9" stroke="#1B2A4A" stroke-width="1" opacity="0.8"/>
+  <text x="168.5" y="464" font-size="9" fill="#6B6B6B">Barrel</text>
+</svg>

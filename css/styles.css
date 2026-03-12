@@ -312,6 +312,15 @@ input, select, textarea { font-family: var(--font-stack); font-size: 1rem; }
 .btn-email-exercise:hover { background: #2A4A6B; }
 .btn-email-exercise:disabled { opacity: 0.6; cursor: wait; }
 .btn-email-exercise svg { flex-shrink: 0; }
+.btn-print-exercise {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; background: var(--green); color: var(--white);
+  border: none; border-radius: var(--radius-sm);
+  font-size: 0.88rem; font-weight: 600; cursor: pointer;
+  transition: background var(--transition); margin-left: 8px;
+}
+.btn-print-exercise:hover { background: var(--green-dark); }
+.btn-print-exercise svg { flex-shrink: 0; }
 
 /* --- Favorites Email Gate Modal --- */
 .modal-overlay {
@@ -580,7 +589,16 @@ input, select, textarea { font-family: var(--font-stack); font-size: 1rem; }
 /* --- Print --- */
 @media print {
   .top-bar, .site-header, .filter-section, .card-actions, .email-cta,
-  .submit-section, .modal-overlay, .toast, .btn-favorite { display: none !important; }
+  .submit-section, .modal-overlay, .toast, .btn-favorite,
+  .btn-email-exercise, .btn-print-exercise, .detail-email-cta,
+  .site-footer, .breadcrumb, .exercise-sidebar, .faq-section,
+  .detail-equipment-links { display: none !important; }
   .card-detail { display: block !important; }
   .exercise-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  body { background: white !important; }
+  .exercise-main { width: 100% !important; max-width: 100% !important; }
+  .exercise-page-grid { display: block !important; }
+  .diagram-section img { max-width: 300px !important; margin: 0 auto; }
+  .detail-section { break-inside: avoid; }
+  .exercises-section { padding: 0 !important; }
 }

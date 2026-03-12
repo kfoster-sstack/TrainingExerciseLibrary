@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-r" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2980B9"/>
+    </marker>
+    <pattern id="sand" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#F5EFE0"/>
+      <circle cx="1" cy="1" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+      <circle cx="3" cy="3" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <text x="200" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">Riding Past Scary Objects at the Sitting Trot</text>
+  <text x="200" y="48" text-anchor="middle" font-size="10" fill="#6B6B6B">Trail / Obstacle Setup</text>
+  <rect x="60" y="60" width="280" height="360" rx="4" fill="url(#sand)" stroke="#8B7D6B" stroke-width="2"/>
+  <rect x="68" y="68" width="264" height="344" rx="2" fill="none" stroke="#A0937D" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="200.0" y1="68" x2="200.0" y2="412" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <line x1="68" y1="240.0" x2="332" y2="240.0" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <text x="200.0" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">A</text>
+  <text x="200.0" y="436" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">C</text>
+  <text x="46" y="119.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">F</text>
+  <text x="46" y="245.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">B</text>
+  <text x="46" y="371.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">M</text>
+  <text x="354" y="119.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">K</text>
+  <text x="354" y="245.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">E</text>
+  <text x="354" y="371.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">H</text>
+  <text x="212.0" y="236.0" font-size="12" font-weight="600" fill="#999">X</text>
+  <rect x="170.0" y="137.0" width="60" height="6" rx="3" fill="#E67E22" stroke="#D35400" stroke-width="1"/>
+  <text x="238.0" y="144.0" font-size="9" fill="#6B6B6B">bridge</text>
+  <polygon points="160.0,201.0 166.0,215.0 154.0,215.0" fill="#E67E22" stroke="#D35400" stroke-width="1.5"/>
+  <text x="150.0" y="213.0" text-anchor="end" font-size="9" fill="#E67E22" font-weight="600">cone</text>
+  <polygon points="240.0,201.0 246.0,215.0 234.0,215.0" fill="#E67E22" stroke="#D35400" stroke-width="1.5"/>
+  <text x="250.0" y="213.0" font-size="9" fill="#E67E22" font-weight="600">cone</text>
+  <rect x="160.0" y="277.0" width="80" height="6" rx="3" fill="#E67E22" stroke="#D35400" stroke-width="1"/>
+  <text x="248.0" y="284.0" font-size="9" fill="#6B6B6B">poles</text>
+  <rect x="175.0" y="330.0" width="50" height="30" rx="2" fill="#2980B9" opacity="0.3" stroke="#2980B9" stroke-width="1"/>
+  <text x="234.0" y="350.0" font-size="9" fill="#6B6B6B">tarp</text>
+  <path d="M 200.0,90 L 200.0,140.0 L 200.0,210.0 C 170.0,240.0 230.0,260.0 200.0,280.0 L 200.0,345.0 L 200.0,400" fill="none" stroke="#2D5A3D" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="60" y1="460" x2="78" y2="460" stroke="#2D5A3D" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="82" y="464" font-size="9" fill="#6B6B6B">Trail path</text>
+  <rect x="145.0" y="458" width="16" height="4" rx="2" fill="#E67E22" stroke="#D35400" stroke-width="0.5"/>
+  <text x="165.0" y="464" font-size="9" fill="#6B6B6B">Obstacle</text>
+</svg>

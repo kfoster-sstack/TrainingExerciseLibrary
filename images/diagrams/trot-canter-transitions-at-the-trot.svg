@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 580" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-r" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2980B9"/>
+    </marker>
+    <pattern id="sand" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#F5EFE0"/>
+      <circle cx="1" cy="1" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+      <circle cx="3" cy="3" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <text x="200" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">Trot-Canter Transitions at the Trot</text>
+  <text x="200" y="48" text-anchor="middle" font-size="10" fill="#6B6B6B">Standard Dressage Arena (20m x 60m)</text>
+  <rect x="60" y="60" width="280" height="480" rx="4" fill="url(#sand)" stroke="#8B7D6B" stroke-width="2"/>
+  <rect x="68" y="68" width="264" height="464" rx="2" fill="none" stroke="#A0937D" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="200.0" y1="68" x2="200.0" y2="532" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <line x1="68" y1="300.0" x2="332" y2="300.0" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <text x="200.0" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">A</text>
+  <text x="200.0" y="556" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">C</text>
+  <text x="46" y="113.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">F</text>
+  <text x="354" y="113.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">K</text>
+  <text x="46" y="209.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">P</text>
+  <text x="354" y="209.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">V</text>
+  <text x="46" y="305.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">B</text>
+  <text x="354" y="305.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">E</text>
+  <text x="46" y="401.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">R</text>
+  <text x="354" y="401.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">S</text>
+  <text x="46" y="497.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">M</text>
+  <text x="354" y="497.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">H</text>
+  <text x="212.0" y="296.0" font-size="12" font-weight="600" fill="#999">X</text>
+  <line x1="75" y1="100" x2="75" y2="500" stroke="#2D5A3D" stroke-width="2.5" stroke-dasharray="10,5" marker-end="url(#ah)"/>
+  <line x1="67" y1="140" x2="83" y2="140" stroke="#E67E22" stroke-width="3"/>
+  <text x="91" y="144" font-size="10" fill="#E67E22" font-weight="600">walk</text>
+  <line x1="67" y1="220" x2="83" y2="220" stroke="#E67E22" stroke-width="3"/>
+  <text x="91" y="224" font-size="10" fill="#E67E22" font-weight="600">trot</text>
+  <line x1="67" y1="300" x2="83" y2="300" stroke="#E67E22" stroke-width="3"/>
+  <text x="91" y="304" font-size="10" fill="#E67E22" font-weight="600">walk</text>
+  <line x1="67" y1="380" x2="83" y2="380" stroke="#E67E22" stroke-width="3"/>
+  <text x="91" y="384" font-size="10" fill="#E67E22" font-weight="600">trot</text>
+  <line x1="67" y1="460" x2="83" y2="460" stroke="#E67E22" stroke-width="3"/>
+  <text x="91" y="464" font-size="10" fill="#E67E22" font-weight="600">walk</text>
+  <circle cx="75" cy="90" r="6" fill="#2D5A3D" opacity="0.85"/>
+  <line x1="60" y1="560" x2="78" y2="560" stroke="#2D5A3D" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="82" y="564" font-size="9" fill="#6B6B6B">Direction</text>
+  <polygon points="145.5,555 150.5,564 140.5,564" fill="#E67E22" stroke="#D35400" stroke-width="1"/>
+  <text x="155.5" y="564" font-size="9" fill="#6B6B6B">Transition point</text>
+</svg>

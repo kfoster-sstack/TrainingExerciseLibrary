@@ -267,6 +267,15 @@
   function buildDetailHTML(ex) {
     var html = '';
 
+    // Arena Diagram
+    if (ex.slug) {
+      html += '<div class="detail-section diagram-section" style="margin-bottom:18px;">';
+      html += '<h4>Arena Diagram</h4>';
+      html += '<div style="max-width:320px;margin:0 auto;">';
+      html += '<img src="images/diagrams/' + ex.slug + '.svg" alt="Arena diagram for ' + ex.title + '" style="width:100%;height:auto;" loading="lazy" onerror="this.parentElement.parentElement.style.display=\'none\'">';
+      html += '</div></div>';
+    }
+
     // Steps
     html += '<div class="detail-section"><h4>Step-by-Step Instructions</h4><ol class="detail-steps">';
     ex.steps.forEach(function (s) { html += '<li>' + s + '</li>'; });
@@ -294,11 +303,15 @@
       html += '</div></div>';
     }
 
-    // Email exercise button
+    // Email + Print buttons
     html += '<div class="detail-section detail-email-cta">';
     html += '<button class="btn-email-exercise" data-id="' + ex.id + '">';
     html += '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>';
     html += ' Email Me This Exercise';
+    html += '</button>';
+    html += '<button class="btn-print-exercise" data-id="' + ex.id + '">';
+    html += '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>';
+    html += ' Print Exercise';
     html += '</button>';
     html += '</div>';
 
@@ -390,6 +403,8 @@
           detail.innerHTML = buildDetailHTML(ex);
           var emailBtn = detail.querySelector('.btn-email-exercise');
           if (emailBtn) emailBtn.addEventListener('click', handleEmailExercise);
+          var printBtn = detail.querySelector('.btn-print-exercise');
+          if (printBtn) printBtn.addEventListener('click', handlePrintExercise);
         } else {
           detail.innerHTML = '<p class="detail-error">Unable to load exercise details. Please try again.</p>';
         }
@@ -449,11 +464,12 @@
     });
   }
 
-  function openEmailExerciseModal(pendingId) {
+  function openEmailExerciseModal(pendingId, pendingAction) {
     var overlay = document.getElementById('emailExerciseModal');
     if (!overlay) return;
     overlay.classList.add('active');
     overlay.setAttribute('data-pending-id', pendingId || '');
+    overlay.setAttribute('data-pending-action', pendingAction || 'email');
 
     overlay.querySelector('.modal-close').onclick = function () { overlay.classList.remove('active'); };
     overlay.addEventListener('click', function (ev) {
@@ -477,11 +493,101 @@
       overlay.classList.remove('active');
 
       var pendingId = parseInt(overlay.getAttribute('data-pending-id'), 10);
+      var action = overlay.getAttribute('data-pending-action') || 'email';
       if (pendingId) {
-        var btn = document.querySelector('.btn-email-exercise[data-id="' + pendingId + '"]');
-        sendExerciseEmail(pendingId, email, name, btn);
+        if (action === 'print') {
+          printExercise(pendingId);
+        } else {
+          var btn = document.querySelector('.btn-email-exercise[data-id="' + pendingId + '"]');
+          sendExerciseEmail(pendingId, email, name, btn);
+        }
       }
     };
+  }
+
+  /* -----------------------------------------------------------
+     Print Exercise (email-gated)
+     ----------------------------------------------------------- */
+  function handlePrintExercise(e) {
+    var btn = e.currentTarget;
+    var id = parseInt(btn.getAttribute('data-id'), 10);
+
+    if (!emailCaptured) {
+      openEmailExerciseModal(id, 'print');
+      return;
+    }
+
+    printExercise(id);
+  }
+
+  function printExercise(id) {
+    loadDetail(id, function (ex) {
+      if (!ex) {
+        showToast('Unable to load exercise. Please try again.', 'error');
+        return;
+      }
+
+      var slug = ex.slug || '';
+      var diagramURL = slug ? (window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/images/diagrams/' + slug + '.svg')) : '';
+
+      var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">';
+      html += '<title>' + ex.title + ' - Training Exercise Library</title>';
+      html += '<style>';
+      html += 'body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 30px 20px; color: #2A2A2A; line-height: 1.6; }';
+      html += 'h1 { color: #1B2A4A; font-size: 22px; margin-bottom: 4px; }';
+      html += '.meta { color: #6B6B6B; font-size: 13px; margin-bottom: 16px; }';
+      html += '.diagram { text-align: center; margin: 20px 0; }';
+      html += '.diagram img { max-width: 320px; height: auto; }';
+      html += 'h2 { color: #2D5A3D; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 8px; border-bottom: 2px solid #E8F0EB; padding-bottom: 4px; }';
+      html += 'ol, ul { padding-left: 22px; margin-bottom: 16px; }';
+      html += 'li { margin-bottom: 6px; font-size: 14px; }';
+      html += '.tip { background: #E8F0EB; padding: 12px 14px; border-left: 4px solid #2D5A3D; margin: 16px 0; font-size: 14px; }';
+      html += '.footer { margin-top: 30px; padding-top: 12px; border-top: 1px solid #ddd; font-size: 11px; color: #999; text-align: center; }';
+      html += '@media print { body { padding: 0; } }';
+      html += '</style></head><body>';
+
+      html += '<h1>' + ex.title + '</h1>';
+      html += '<div class="meta"><strong>Discipline:</strong> ' + ex.discipline + ' &nbsp;|&nbsp; <strong>Level:</strong> ' + ex.level.charAt(0).toUpperCase() + ex.level.slice(1) + ' &nbsp;|&nbsp; <strong>Time:</strong> ' + ex.time + ' min</div>';
+      html += '<div class="meta"><strong>Focus:</strong> ' + ex.focus.join(', ') + ' &nbsp;|&nbsp; <strong>Equipment:</strong> ' + ex.equipment.join(', ') + '</div>';
+
+      if (slug) {
+        html += '<div class="diagram"><img src="' + diagramURL + '" alt="Arena diagram"></div>';
+      }
+
+      html += '<h2>Step-by-Step Instructions</h2><ol>';
+      ex.steps.forEach(function (s) { html += '<li>' + s + '</li>'; });
+      html += '</ol>';
+
+      html += '<h2>Common Mistakes to Avoid</h2><ul>';
+      ex.mistakes.forEach(function (m) { html += '<li>' + m + '</li>'; });
+      html += '</ul>';
+
+      html += '<h2>Variations &amp; Progressions</h2><ul>';
+      ex.variations.forEach(function (v) { html += '<li>' + v + '</li>'; });
+      html += '</ul>';
+
+      html += '<div class="tip"><strong>' + ex.tips.split(':')[0] + ':</strong>' + ex.tips.split(':').slice(1).join(':') + '</div>';
+
+      html += '<div class="footer">Training Exercise Library &mdash; Powered by Schneider Saddlery &mdash; sstack.com</div>';
+      html += '</body></html>';
+
+      var printWin = window.open('', '_blank');
+      if (printWin) {
+        printWin.document.write(html);
+        printWin.document.close();
+        // Wait for diagram image to load before printing
+        var img = printWin.document.querySelector('.diagram img');
+        if (img && !img.complete) {
+          img.onload = function () { printWin.print(); };
+          img.onerror = function () { printWin.print(); };
+        } else {
+          setTimeout(function () { printWin.print(); }, 300);
+        }
+        showToast('Print dialog opened!', 'success');
+      } else {
+        showToast('Please allow pop-ups to print exercises.', 'error');
+      }
+    });
   }
 
   /* -----------------------------------------------------------

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" font-family="'Segoe UI', Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-r" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <polygon points="8 0, 0 3, 8 6" fill="#2D5A3D"/>
+    </marker>
+    <marker id="ah-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#2980B9"/>
+    </marker>
+    <pattern id="sand" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#F5EFE0"/>
+      <circle cx="1" cy="1" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+      <circle cx="3" cy="3" r="0.5" fill="#EBE3D0" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <text x="200" y="28" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">Diamond Pattern at the Sitting Trot</text>
+  <text x="200" y="48" text-anchor="middle" font-size="10" fill="#6B6B6B">Arena Setup</text>
+  <rect x="60" y="60" width="280" height="360" rx="4" fill="url(#sand)" stroke="#8B7D6B" stroke-width="2"/>
+  <rect x="68" y="68" width="264" height="344" rx="2" fill="none" stroke="#A0937D" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="200.0" y1="68" x2="200.0" y2="412" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <line x1="68" y1="240.0" x2="332" y2="240.0" stroke="#C4B9A8" stroke-width="1" stroke-dasharray="6,6"/>
+  <text x="200.0" y="54" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">A</text>
+  <text x="200.0" y="436" text-anchor="middle" font-size="15" font-weight="700" fill="#1B2A4A">C</text>
+  <text x="46" y="119.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">F</text>
+  <text x="46" y="245.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">B</text>
+  <text x="46" y="371.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">M</text>
+  <text x="354" y="119.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">K</text>
+  <text x="354" y="245.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">E</text>
+  <text x="354" y="371.0" text-anchor="middle" font-size="14" font-weight="700" fill="#1B2A4A">H</text>
+  <text x="212.0" y="236.0" font-size="12" font-weight="600" fill="#999">X</text>
+  <polygon points="200.0,160.0 280.0,240.0 200.0,320.0 120.0,240.0" fill="none" stroke="#2D5A3D" stroke-width="2.5" stroke-dasharray="10,5"/>
+  <polygon points="200.0,151.0 206.0,165.0 194.0,165.0" fill="#E67E22" stroke="#D35400" stroke-width="1.5"/>
+  <polygon points="280.0,231.0 286.0,245.0 274.0,245.0" fill="#E67E22" stroke="#D35400" stroke-width="1.5"/>
+  <polygon points="200.0,311.0 206.0,325.0 194.0,325.0" fill="#E67E22" stroke="#D35400" stroke-width="1.5"/>
+  <polygon points="120.0,231.0 126.0,245.0 114.0,245.0" fill="#E67E22" stroke="#D35400" stroke-width="1.5"/>
+  <path d="M 264.3,163.4 A 100,100 0 0,1 294.0,274.2" fill="none" stroke="#2D5A3D" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="60" y1="460" x2="78" y2="460" stroke="#2D5A3D" stroke-width="2.5" stroke-dasharray="6,3"/>
+  <text x="82" y="464" font-size="9" fill="#6B6B6B">Diamond path</text>
+  <polygon points="162.0,455 167.0,464 157.0,464" fill="#E67E22" stroke="#D35400" stroke-width="1"/>
+  <text x="172.0" y="464" font-size="9" fill="#6B6B6B">Marker</text>
+</svg>
