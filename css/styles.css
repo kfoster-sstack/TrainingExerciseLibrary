@@ -78,20 +78,6 @@ input, select, textarea { font-family: var(--font-stack); font-size: 1rem; }
 .header-nav { display: flex; align-items: center; gap: 24px; }
 .header-nav a { color: var(--text-dark); font-size: 0.88rem; font-weight: 500; transition: color var(--transition); }
 .header-nav a:hover { color: var(--green); }
-.header-nav .btn-favorites {
-  background: var(--green); color: var(--white);
-  padding: 8px 16px; border-radius: var(--radius-sm);
-  font-size: 0.82rem; font-weight: 600;
-  display: flex; align-items: center; gap: 6px;
-  transition: background var(--transition);
-}
-.header-nav .btn-favorites:hover { background: var(--green-dark); color: var(--white); }
-.favorites-count {
-  background: rgba(255,255,255,0.25); color: var(--white);
-  font-size: 0.68rem; padding: 1px 6px;
-  border-radius: 10px; font-weight: 700; min-width: 18px; text-align: center;
-}
-.btn-favorites:hover .favorites-count { background: rgba(255,255,255,0.35); }
 .mobile-menu-btn { display: none; flex-direction: column; gap: 4px; padding: 8px; }
 .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--navy); transition: var(--transition); }
 
@@ -251,17 +237,6 @@ input, select, textarea { font-family: var(--font-stack); font-size: 1rem; }
 .btn-view:hover { background: var(--green-dark); }
 .btn-view svg { width: 14px; height: 14px; fill: currentColor; transition: transform var(--transition); }
 .btn-view.active svg { transform: rotate(180deg); }
-.btn-favorite {
-  padding: 10px 14px; background: var(--green-light);
-  border: 2px solid var(--border); border-radius: var(--radius-sm);
-  transition: all var(--transition); display: flex; align-items: center; justify-content: center;
-}
-.btn-favorite svg { width: 18px; height: 18px; fill: none; stroke: var(--text-light); stroke-width: 2; transition: all var(--transition); }
-.btn-favorite:hover { border-color: var(--red); }
-.btn-favorite:hover svg { stroke: var(--red); }
-.btn-favorite.active { background: #fce4ec; border-color: var(--red); }
-.btn-favorite.active svg { fill: var(--red); stroke: var(--red); }
-
 /* --- Expanded Exercise Detail --- */
 .card-detail { display: none; border-top: 2px solid var(--green-light); padding: 22px; background: #fafcfa; }
 .card-detail.open { display: block; }
@@ -589,7 +564,7 @@ input, select, textarea { font-family: var(--font-stack); font-size: 1rem; }
 /* --- Print --- */
 @media print {
   .top-bar, .site-header, .filter-section, .card-actions, .email-cta,
-  .submit-section, .modal-overlay, .toast, .btn-favorite,
+  .submit-section, .modal-overlay, .toast,
   .btn-email-exercise, .btn-print-exercise, .detail-email-cta,
   .site-footer, .breadcrumb, .exercise-sidebar, .faq-section,
   .detail-equipment-links { display: none !important; }

@@ -21,43 +21,71 @@
     };
     if (name) profileAttrs.first_name = name;
 
+    var subPayload = {
+      data: {
+        type: 'subscription',
+        attributes: {
+          custom_source: 'Training Exercise Library',
+          profile: { data: { type: 'profile', attributes: profileAttrs } }
+        },
+        relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } }
+      }
+    };
+    console.log('[Klaviyo] Subscribing:', email, 'to list:', KLAVIYO_LIST_ID, 'company:', KLAVIYO_COMPANY_ID);
+    console.log('[Klaviyo] Subscription payload:', JSON.stringify(subPayload, null, 2));
     fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + KLAVIYO_COMPANY_ID, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
-      body: JSON.stringify({
-        data: {
-          type: 'subscription',
-          attributes: {
-            custom_source: 'Training Exercise Library',
-            profile: { data: { type: 'profile', attributes: profileAttrs } }
-          },
-          relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } }
-        }
-      })
-    }).catch(function () {});
+      body: JSON.stringify(subPayload)
+    }).then(function (response) {
+      console.log('[Klaviyo] Subscription response:', response.status, response.statusText);
+      if (!response.ok) {
+        return response.text().then(function (body) {
+          console.error('[Klaviyo] Subscription error body:', body);
+        });
+      } else {
+        console.log('[Klaviyo] Subscription SUCCESS');
+      }
+    }).catch(function (err) {
+      console.error('[Klaviyo] Subscription fetch error:', err);
+    });
   }
 
   function trackExerciseEvent(email, exerciseData) {
     if (!KLAVIYO_COMPANY_ID) return;
 
+    var evtPayload = {
+      data: {
+        type: 'event',
+        attributes: {
+          properties: exerciseData,
+          metric: {
+            data: { type: 'metric', attributes: { name: 'Horse Exercise Plan Requested' } }
+          },
+          profile: {
+            data: { type: 'profile', attributes: { email: email } }
+          }
+        }
+      }
+    };
+    console.log('[Klaviyo] Tracking event for:', email);
+    console.log('[Klaviyo] Event payload:', JSON.stringify(evtPayload, null, 2));
     fetch('https://a.klaviyo.com/client/events/?company_id=' + KLAVIYO_COMPANY_ID, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
-      body: JSON.stringify({
-        data: {
-          type: 'event',
-          attributes: {
-            properties: exerciseData,
-            metric: {
-              data: { type: 'metric', attributes: { name: 'Requested Exercise Email' } }
-            },
-            profile: {
-              data: { type: 'profile', attributes: { email: email } }
-            }
-          }
-        }
-      })
-    }).catch(function () {});
+      body: JSON.stringify(evtPayload)
+    }).then(function (response) {
+      console.log('[Klaviyo] Event response:', response.status, response.statusText);
+      if (!response.ok) {
+        return response.text().then(function (body) {
+          console.error('[Klaviyo] Event error body:', body);
+        });
+      } else {
+        console.log('[Klaviyo] Event SUCCESS');
+      }
+    }).catch(function (err) {
+      console.error('[Klaviyo] Event fetch error:', err);
+    });
   }
 
   function showToast(message, type) {
@@ -182,13 +210,9 @@
     });
 
     if (printBtnEl) {
+      if (!emailCaptured) printBtnEl.style.display = 'none';
       printBtnEl.addEventListener('click', function () {
-        if (emailCaptured) {
-          printExercise();
-          return;
-        }
-        pendingAction = 'print';
-        modal.classList.add('active');
+        printExercise();
       });
     }
 
@@ -209,6 +233,9 @@
       emailCaptured = email;
       localStorage.setItem('tel_email', email);
       if (name) localStorage.setItem('tel_user_name', name);
+
+      // Reveal print button now that email is captured
+      if (printBtnEl) printBtnEl.style.display = '';
 
       modal.classList.remove('active');
 

@@ -54,11 +54,6 @@
         <a href="index.html">Exercises</a>
         <a href="about.html">About</a>
         <a href="https://www.sstack.com" target="_blank" rel="noopener">Shop sstack.com</a>
-        <a href="#" class="btn-favorites">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          Favorites
-          <span class="favorites-count">0</span>
-        </a>
       </nav>
     </div>
   </header>
@@ -67,7 +62,7 @@
   <section class="hero">
     <div class="container hero-content">
       <h2>1,000+ Training Exercises<br>for <span class="highlight">Every Discipline</span></h2>
-      <p>Browse our curated library of horse training exercises. Filter by discipline, skill level, and focus area. Save your favorites and build your training program.</p>
+      <p>Browse our curated library of horse training exercises. Filter by discipline, skill level, and focus area. Email or print any exercise to build your training program.</p>
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="stat-number">1,000+</span>
@@ -149,31 +144,6 @@
       <div class="pagination" id="paginationControls"></div>
     </div>
   </section>
-
-  <!-- Save Favorites Email Gate Modal -->
-  <div class="modal-overlay" id="favoritesModal">
-    <div class="modal" style="position:relative;">
-      <button class="modal-close" aria-label="Close">&times;</button>
-      <div class="modal-header">
-        <h3>Save Your Favorites</h3>
-        <p>Enter your email to save and export your favorite exercises.</p>
-      </div>
-      <div class="modal-body">
-        <form id="favoritesForm">
-          <div class="form-group">
-            <label for="favName">Your Name</label>
-            <input type="text" id="favName" placeholder="First name">
-          </div>
-          <div class="form-group">
-            <label for="favEmail">Email Address *</label>
-            <input type="email" id="favEmail" placeholder="you@example.com" required>
-          </div>
-          <button type="submit" class="btn-submit">Save &amp; Continue</button>
-          <p class="modal-note">We respect your privacy. Unsubscribe anytime. See our <a href="privacy.html">Privacy Policy</a>.</p>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <!-- Email Exercise Modal -->
   <div class="modal-overlay" id="emailExerciseModal">
@@ -273,7 +243,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question">Can I save exercises for later?</button>
-          <div class="faq-answer">Yes! Click the heart icon on any exercise card to save it to your favorites. You will be asked for your email address the first time to enable the favorites feature. Your favorites are saved locally on your device and can be accessed anytime by clicking the "Favorites" button in the header.</div>
+          <div class="faq-answer">Yes! Click "Email Me This Exercise" on any exercise to have the full instructions, tips, and variations sent to your inbox. You can also print exercises for use at the barn. Both features are free &mdash; just enter your email address to get started.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question">How can I submit my own training exercise?</button>

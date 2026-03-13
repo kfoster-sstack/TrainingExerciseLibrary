@@ -22,7 +22,6 @@
   var filtered = [];       // current filtered subset of allMeta
   var currentPage = 1;
   var chunkCache = {};     // chunk number -> exercise detail map
-  var favorites = JSON.parse(localStorage.getItem('tel_favorites') || '[]');
   var emailCaptured = localStorage.getItem('tel_email') || '';
   var submissions = JSON.parse(localStorage.getItem('tel_submissions') || '[]');
 
@@ -35,11 +34,9 @@
     bindFilters();
     bindSearch();
     bindMobileMenu();
-    bindFavoritesButton();
     bindFAQ();
     bindSubmitForm();
     bindEmailCTA();
-    updateFavoritesCount();
     loadMeta();
   }
 
@@ -115,11 +112,25 @@
       }
     };
 
+    console.log('[Klaviyo] Subscribing:', email, 'to list:', KLAVIYO_LIST_ID, 'company:', KLAVIYO_COMPANY_ID);
+    console.log('[Klaviyo] Subscription payload:', JSON.stringify(payload, null, 2));
     return fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + KLAVIYO_COMPANY_ID, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
       body: JSON.stringify(payload)
-    }).catch(function () {});
+    }).then(function (response) {
+      console.log('[Klaviyo] Subscription response:', response.status, response.statusText);
+      if (!response.ok) {
+        return response.text().then(function (body) {
+          console.error('[Klaviyo] Subscription error body:', body);
+        });
+      } else {
+        console.log('[Klaviyo] Subscription SUCCESS');
+      }
+      return response;
+    }).catch(function (err) {
+      console.error('[Klaviyo] Subscription fetch error:', err);
+    });
   }
 
   function buildExerciseEmailHTML(ex) {
@@ -170,7 +181,7 @@
             exercise_html: buildExerciseEmailHTML(exerciseData)
           },
           metric: {
-            data: { type: 'metric', attributes: { name: 'Requested Exercise Email' } }
+            data: { type: 'metric', attributes: { name: 'Horse Exercise Plan Requested' } }
           },
           profile: {
             data: { type: 'profile', attributes: { email: email } }
@@ -179,11 +190,25 @@
       }
     };
 
+    console.log('[Klaviyo] Tracking event:', 'Horse Exercise Plan Requested', 'for:', email);
+    console.log('[Klaviyo] Event payload:', JSON.stringify(payload, null, 2));
     return fetch('https://a.klaviyo.com/client/events/?company_id=' + KLAVIYO_COMPANY_ID, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
       body: JSON.stringify(payload)
-    }).catch(function () {});
+    }).then(function (response) {
+      console.log('[Klaviyo] Event response:', response.status, response.statusText);
+      if (!response.ok) {
+        return response.text().then(function (body) {
+          console.error('[Klaviyo] Event error body:', body);
+        });
+      } else {
+        console.log('[Klaviyo] Event SUCCESS');
+      }
+      return response;
+    }).catch(function (err) {
+      console.error('[Klaviyo] Event fetch error:', err);
+    });
   }
 
   /* -----------------------------------------------------------
@@ -207,8 +232,7 @@
     var pageItems = filtered.slice(start, start + PER_PAGE);
 
     grid.innerHTML = pageItems.map(function (ex) {
-      var isFav = favorites.indexOf(ex.id) !== -1;
-      return buildCardHTML(ex, isFav);
+      return buildCardHTML(ex);
     }).join('');
 
     if (info) {
@@ -221,14 +245,10 @@
     grid.querySelectorAll('.btn-view').forEach(function (btn) {
       btn.addEventListener('click', handleViewToggle);
     });
-    grid.querySelectorAll('.btn-favorite').forEach(function (btn) {
-      btn.addEventListener('click', handleFavoriteToggle);
-    });
-
     renderPagination(totalPages);
   }
 
-  function buildCardHTML(ex, isFav) {
+  function buildCardHTML(ex) {
     var levelClass = 'badge-level-' + ex.level;
     var levelLabel = ex.level.charAt(0).toUpperCase() + ex.level.slice(1);
     var timeLabel = ex.time + ' min';
@@ -254,9 +274,6 @@
           '<svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>' +
         '</button>' +
         slugLink +
-        '<button class="btn-favorite' + (isFav ? ' active' : '') + '" data-id="' + ex.id + '" aria-label="Save to favorites">' +
-          '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>' +
-        '</button>' +
       '</div>' +
       '<div class="card-detail" id="detail-' + ex.id + '">' +
         '<div class="detail-loading"><div class="spinner"></div></div>' +
@@ -303,13 +320,13 @@
       html += '</div></div>';
     }
 
-    // Email + Print buttons
+    // Email + Print buttons (print only visible after email captured)
     html += '<div class="detail-section detail-email-cta">';
     html += '<button class="btn-email-exercise" data-id="' + ex.id + '">';
     html += '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>';
     html += ' Email Me This Exercise';
     html += '</button>';
-    html += '<button class="btn-print-exercise" data-id="' + ex.id + '">';
+    html += '<button class="btn-print-exercise" data-id="' + ex.id + '"' + (emailCaptured ? '' : ' style="display:none"') + '>';
     html += '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>';
     html += ' Print Exercise';
     html += '</button>';
@@ -490,13 +507,23 @@
       localStorage.setItem('tel_email', email);
       if (name) localStorage.setItem('tel_user_name', name);
 
+      // Reveal all print buttons now that email is captured
+      document.querySelectorAll('.btn-print-exercise').forEach(function (b) { b.style.display = ''; });
+
+      // Always subscribe to Klaviyo when email is first captured
+      subscribeToKlaviyo(email, name, 'exercise_email');
+
       overlay.classList.remove('active');
 
       var pendingId = parseInt(overlay.getAttribute('data-pending-id'), 10);
       var action = overlay.getAttribute('data-pending-action') || 'email';
       if (pendingId) {
         if (action === 'print') {
-          printExercise(pendingId);
+          // Track the event for the flow trigger, then print
+          loadDetail(pendingId, function (ex) {
+            if (ex) trackExerciseEvent(email, ex);
+            printExercise(pendingId);
+          });
         } else {
           var btn = document.querySelector('.btn-email-exercise[data-id="' + pendingId + '"]');
           sendExerciseEmail(pendingId, email, name, btn);
@@ -511,12 +538,6 @@
   function handlePrintExercise(e) {
     var btn = e.currentTarget;
     var id = parseInt(btn.getAttribute('data-id'), 10);
-
-    if (!emailCaptured) {
-      openEmailExerciseModal(id, 'print');
-      return;
-    }
-
     printExercise(id);
   }
 
@@ -589,115 +610,6 @@
       }
     });
   }
-
-  /* -----------------------------------------------------------
-     Favorites
-     ----------------------------------------------------------- */
-  function handleFavoriteToggle(e) {
-    var btn = e.currentTarget;
-    var id = parseInt(btn.getAttribute('data-id'), 10);
-
-    if (!emailCaptured && favorites.indexOf(id) === -1) {
-      openFavoritesModal(id);
-      return;
-    }
-
-    toggleFavorite(id, btn);
-  }
-
-  function toggleFavorite(id, btn) {
-    var idx = favorites.indexOf(id);
-    if (idx > -1) {
-      favorites.splice(idx, 1);
-      if (btn) btn.classList.remove('active');
-      showToast('Removed from favorites');
-    } else {
-      favorites.push(id);
-      if (btn) btn.classList.add('active');
-      showToast('Added to favorites!', 'success');
-    }
-    localStorage.setItem('tel_favorites', JSON.stringify(favorites));
-    updateFavoritesCount();
-  }
-
-  function updateFavoritesCount() {
-    var countEls = document.querySelectorAll('.favorites-count');
-    countEls.forEach(function (el) {
-      el.textContent = favorites.length;
-    });
-  }
-
-  /* -----------------------------------------------------------
-     Favorites Modal (Email Gate)
-     ----------------------------------------------------------- */
-  function openFavoritesModal(pendingId) {
-    var overlay = document.getElementById('favoritesModal');
-    if (!overlay) return;
-    overlay.classList.add('active');
-    overlay.setAttribute('data-pending-id', pendingId || '');
-
-    overlay.querySelector('.modal-close').onclick = function () { overlay.classList.remove('active'); };
-    overlay.addEventListener('click', function (ev) {
-      if (ev.target === overlay) overlay.classList.remove('active');
-    });
-
-    var form = document.getElementById('favoritesForm');
-    form.onsubmit = function (ev) {
-      ev.preventDefault();
-      var name = document.getElementById('favName').value.trim();
-      var email = document.getElementById('favEmail').value.trim();
-      if (!email) return;
-
-      emailCaptured = email;
-      localStorage.setItem('tel_email', email);
-      localStorage.setItem('tel_user_name', name);
-
-      subscribeToKlaviyo(email, name, 'favorites_gate');
-
-      overlay.classList.remove('active');
-      showToast('Welcome, ' + (name || 'friend') + '! You can now save favorites.', 'success');
-
-      var pendingId = parseInt(overlay.getAttribute('data-pending-id'), 10);
-      if (pendingId) {
-        var btn = document.querySelector('.btn-favorite[data-id="' + pendingId + '"]');
-        toggleFavorite(pendingId, btn);
-      }
-    };
-  }
-
-  function bindFavoritesButton() {
-    var btns = document.querySelectorAll('.btn-favorites');
-    btns.forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        showFavoritesView();
-      });
-    });
-  }
-
-  function showFavoritesView() {
-    if (favorites.length === 0) {
-      showToast('No favorites saved yet. Click the heart icon on any exercise.', 'error');
-      return;
-    }
-    var favExercises = allMeta.filter(function (ex) { return favorites.indexOf(ex.id) !== -1; });
-
-    clearFilters();
-    filtered = favExercises;
-    currentPage = 1;
-    renderPage();
-    var info = document.getElementById('resultsInfo');
-    if (info) info.innerHTML = 'Showing <strong>' + favExercises.length + '</strong> favorited exercises &mdash; <button onclick="window.TEL_showAll()" style="color:var(--red);text-decoration:underline;background:none;border:none;cursor:pointer;font-size:inherit;">Show All</button>';
-
-    document.getElementById('exercisesGrid').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  window.TEL_showAll = function () {
-    clearFilters();
-    filtered = allMeta.slice();
-    currentPage = 1;
-    renderPage();
-  };
 
   /* -----------------------------------------------------------
      Filters
