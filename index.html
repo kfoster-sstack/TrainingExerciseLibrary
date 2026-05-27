@@ -7,15 +7,35 @@
   <meta name="keywords" content="horse training exercises, dressage exercises, jumping exercises, groundwork, western riding, barrel racing drills, equine training, Schneider Saddlery">
   <meta name="author" content="Schneider Saddlery">
   <meta name="robots" content="index, follow">
+
+  <title>Training Exercise Library | 1,000+ Horse Training Exercises by Discipline</title>
+  <link rel="canonical" href="https://www.trainingexerciselibrary.com/">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Training Exercise Library - 1,000+ Horse Training Exercises">
   <meta property="og:description" content="Searchable database of horse training exercises by discipline. Browse, filter, and save exercises for flatwork, jumping, groundwork, western, trail, and barrel racing.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.trainingexerciselibrary.com/">
-  <title>Training Exercise Library | 1,000+ Horse Training Exercises by Discipline</title>
-  <link rel="canonical" href="https://www.trainingexerciselibrary.com/">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <meta property="og:image" content="https://www.trainingexerciselibrary.com/images/og-image.png">
+  <meta property="og:site_name" content="Training Exercise Library">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Training Exercise Library - 1,000+ Horse Training Exercises">
+  <meta name="twitter:description" content="Searchable database of horse training exercises by discipline. Free from Schneider Saddlery, trusted since 1948.">
+  <meta name="twitter:image" content="https://www.trainingexerciselibrary.com/images/og-image.png">
+
+  <!-- Favicon - Schneiders circle logo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/circle-logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/circle-logo.png">
+
+  <!-- Montserrat (body / UI) via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- JSON-LD: WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -23,19 +43,76 @@
     "name": "Training Exercise Library",
     "url": "https://www.trainingexerciselibrary.com/",
     "description": "1,000+ searchable horse training exercises for every discipline. Flatwork, jumping, groundwork, western, trail, and barrel racing exercises with step-by-step instructions.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.trainingexerciselibrary.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "Schneider Saddlery",
-      "url": "https://www.sstack.com"
+      "url": "https://www.sstack.com",
+      "foundingDate": "1948"
     }
   }
+  </script>
+
+  <!-- JSON-LD: FAQPage (mirrors the on-page FAQ) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How do I use the Training Exercise Library?","acceptedAnswer":{"@type":"Answer","text":"Browse exercises using the filter bar at the top of the page. Filter by discipline (dressage, jumping, western, etc.), skill level, focus area, and time required. Click View Exercise on any card to see full step-by-step instructions, common mistakes, and variations."}},
+      {"@type":"Question","name":"Are these exercises suitable for all horses?","acceptedAnswer":{"@type":"Answer","text":"Exercises are labeled by skill level. Beginner exercises are suitable for green horses and novice riders. Intermediate exercises assume basic training is established. Advanced exercises require experienced horses and riders. Always use your judgment and consult with a trainer if unsure."}},
+      {"@type":"Question","name":"Can I save exercises for later?","acceptedAnswer":{"@type":"Answer","text":"Yes. Click Email Me This Exercise on any exercise to have the full instructions, tips, and variations sent to your inbox. You can also print exercises for use at the barn. Both features are free."}},
+      {"@type":"Question","name":"How can I submit my own training exercise?","acceptedAnswer":{"@type":"Answer","text":"Use the Submit an Exercise section on the home page. Fill out the form with your exercise title, discipline, skill level, and a detailed description. Our editorial team reviews all submissions and adds approved exercises to the library."}},
+      {"@type":"Question","name":"Where can I buy the equipment mentioned in exercises?","acceptedAnswer":{"@type":"Answer","text":"Equipment links within each exercise connect directly to sstack.com, the Schneider Saddlery online store. Schneider Saddlery carries a full range of training equipment, tack, and riding gear for all disciplines."}},
+      {"@type":"Question","name":"How often are new exercises added?","acceptedAnswer":{"@type":"Answer","text":"We add new exercises regularly based on trainer contributions, seasonal relevance, and community requests. Sign up for our newsletter to be notified when new exercises are added."}},
+      {"@type":"Question","name":"Is the Training Exercise Library free?","acceptedAnswer":{"@type":"Answer","text":"Yes, the Training Exercise Library is completely free to use. It is provided as a resource by Schneider Saddlery as part of our commitment to supporting the equestrian community. No subscription or payment is required."}}
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics 4 - installs when window.TEL_GA4_ID is set.
+       Example (inject in the live site header via GTM or hand-injected snippet):
+       <script>window.TEL_GA4_ID = 'G-XXXXXXXXXX';</script>
+       should appear BEFORE this block. -->
+  <script>
+    (function () {
+      var id = window.TEL_GA4_ID;
+      if (!id) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', id, { anonymize_ip: true });
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+      document.head.appendChild(s);
+    })();
+  </script>
+
+  <!-- Meta (Facebook) Pixel - installs when window.TEL_META_PIXEL_ID is set. -->
+  <script>
+    (function () {
+      var id = window.TEL_META_PIXEL_ID;
+      if (!id) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+      (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', id);
+      window.fbq('track', 'PageView');
+    })();
   </script>
 </head>
 <body>
 
   <!-- Top Bar -->
   <div class="top-bar">
-    Part of the Schneider Saddlery Equine Network &mdash; Shop <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a>
+    Part of Schneiders EQ &mdash; Shop <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a>
   </div>
 
   <!-- Header -->
@@ -43,7 +120,7 @@
     <div class="container header-inner">
       <a href="index.html" class="site-logo">
         <div class="logo-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 3h-3V1h-2v2H8V1H6v2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H3V9h18v12zM3 7V5h18v2H3zm4 4h4v4H7v-4z"/></svg>
+          <img src="images/icons/circle-logo.png" alt="Training Exercise Library by Schneider Saddlery" width="44" height="44">
         </div>
         <h1>Training Exercise Library<span>By Schneider Saddlery</span></h1>
       </a>
@@ -289,12 +366,12 @@
         <div class="footer-col">
           <h4>Disciplines</h4>
           <ul>
-            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='flatwork';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Flatwork / Dressage</a></li>
-            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='jumping';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Jumping</a></li>
-            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='groundwork';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Groundwork</a></li>
-            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='western';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Western</a></li>
-            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='trail';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Trail / General</a></li>
-            <li><a href="#" onclick="document.getElementById('filterDiscipline').value='speed';document.getElementById('filterDiscipline').dispatchEvent(new Event('change'));return false;">Speed / Barrel Racing</a></li>
+            <li><a href="index.html?discipline=flatwork">Flatwork / Dressage</a></li>
+            <li><a href="index.html?discipline=jumping">Jumping</a></li>
+            <li><a href="index.html?discipline=groundwork">Groundwork</a></li>
+            <li><a href="index.html?discipline=western">Western</a></li>
+            <li><a href="index.html?discipline=trail">Trail / General</a></li>
+            <li><a href="index.html?discipline=speed">Speed / Barrel Racing</a></li>
           </ul>
         </div>
         <div class="footer-col">
