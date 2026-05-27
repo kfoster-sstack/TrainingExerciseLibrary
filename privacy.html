@@ -7,13 +7,45 @@
   <meta name="robots" content="index, follow">
   <title>Privacy Policy | Training Exercise Library</title>
   <link rel="canonical" href="https://www.trainingexerciselibrary.com/privacy.html">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/circle-logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/circle-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      var id = window.TEL_GA4_ID;
+      if (!id) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', id, { anonymize_ip: true });
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+      document.head.appendChild(s);
+    })();
+  </script>
+  <script>
+    (function () {
+      var id = window.TEL_META_PIXEL_ID;
+      if (!id) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+      (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', id);
+      window.fbq('track', 'PageView');
+    })();
+  </script>
 </head>
 <body>
 
   <!-- Top Bar -->
   <div class="top-bar">
-    Part of the Schneider Saddlery Equine Network &mdash; Shop <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a>
+    Part of Schneiders EQ &mdash; Shop <a href="https://www.sstack.com" target="_blank" rel="noopener">sstack.com</a>
   </div>
 
   <!-- Header -->
@@ -21,7 +53,7 @@
     <div class="container header-inner">
       <a href="index.html" class="site-logo">
         <div class="logo-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 3h-3V1h-2v2H8V1H6v2H3c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H3V9h18v12zM3 7V5h18v2H3zm4 4h4v4H7v-4z"/></svg>
+          <img src="images/icons/circle-logo.png" alt="Training Exercise Library by Schneider Saddlery" width="44" height="44">
         </div>
         <h1>Training Exercise Library<span>By Schneider Saddlery</span></h1>
       </a>
@@ -86,7 +118,7 @@
       <h3>Information Sharing</h3>
       <p>We do not sell your personal information. We may share your information in the following circumstances:</p>
       <ul>
-        <li><strong>With Schneider Saddlery:</strong> As part of the Schneider Saddlery Equine Network, your information may be shared with Schneider Saddlery for marketing purposes related to equestrian products and services</li>
+        <li><strong>With Schneider Saddlery:</strong> As part of Schneiders EQ (Schneider Saddlery's network of digital horse owner resources), your information may be shared with Schneider Saddlery for marketing purposes related to equestrian products and services</li>
         <li><strong>Service providers:</strong> We may share information with third-party service providers who assist in operating the Site, such as email delivery services and analytics providers</li>
         <li><strong>Legal requirements:</strong> We may disclose information if required by law or in response to valid legal requests</li>
       </ul>
@@ -131,14 +163,26 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <h3>Training Exercise Library</h3>
-          <p>A searchable database of horse training exercises for every discipline.</p>
+          <p>A searchable database of horse training exercises for every discipline. Made by horse lovers, for horse lovers.</p>
           <p class="footer-tagline">Horses Define Who We Are&trade;</p>
+        </div>
+        <div class="footer-col">
+          <h4>Disciplines</h4>
+          <ul>
+            <li><a href="index.html?discipline=flatwork">Flatwork / Dressage</a></li>
+            <li><a href="index.html?discipline=jumping">Jumping</a></li>
+            <li><a href="index.html?discipline=groundwork">Groundwork</a></li>
+            <li><a href="index.html?discipline=western">Western</a></li>
+            <li><a href="index.html?discipline=trail">Trail / General</a></li>
+            <li><a href="index.html?discipline=speed">Speed / Barrel Racing</a></li>
+          </ul>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
             <li><a href="index.html">Browse Exercises</a></li>
             <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#submitExercise">Submit an Exercise</a></li>
             <li><a href="https://www.sstack.com" target="_blank" rel="noopener">Shop sstack.com</a></li>
           </ul>
         </div>
