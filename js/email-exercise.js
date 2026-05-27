@@ -127,16 +127,18 @@
     var html = '<!DOCTYPE html><html><head><meta charset="UTF-8">';
     html += '<title>' + data.exercise_title + ' - Training Exercise Library</title>';
     html += '<style>';
-    html += 'body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 30px 20px; color: #2A2A2A; line-height: 1.6; }';
-    html += 'h1 { color: #1B2A4A; font-size: 22px; margin-bottom: 4px; }';
+    html += 'body { font-family: Montserrat, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; max-width: 700px; margin: 0 auto; padding: 30px 20px; color: #333; line-height: 1.6; }';
+    html += 'h1 { color: #002848; font-size: 22px; margin-bottom: 4px; }';
     html += '.meta { color: #6B6B6B; font-size: 13px; margin-bottom: 16px; }';
     html += '.diagram { text-align: center; margin: 20px 0; }';
     html += '.diagram img { max-width: 320px; height: auto; }';
-    html += 'h2 { color: #2D5A3D; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 8px; border-bottom: 2px solid #E8F0EB; padding-bottom: 4px; }';
+    html += 'h2 { color: #002848; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 8px; border-bottom: 2px solid #f8f3ec; padding-bottom: 4px; }';
     html += 'ol, ul { padding-left: 22px; margin-bottom: 16px; }';
     html += 'li { margin-bottom: 6px; font-size: 14px; }';
-    html += '.tip { background: #E8F0EB; padding: 12px 14px; border-left: 4px solid #2D5A3D; margin: 16px 0; font-size: 14px; }';
+    html += '.tip { background: #f8f3ec; padding: 12px 14px; border-left: 4px solid #002848; margin: 16px 0; font-size: 14px; }';
+    html += '.tip strong { color: #002848; }';
     html += '.footer { margin-top: 30px; padding-top: 12px; border-top: 1px solid #ddd; font-size: 11px; color: #999; text-align: center; }';
+    html += '.footer a { color: #c00000; text-decoration: none; }';
     html += '@media print { body { padding: 0; } }';
     html += '</style></head><body>';
 
@@ -164,7 +166,7 @@
     html += '</ul>';
 
     html += '<div class="tip"><strong>' + data.tips.split(':')[0] + ':</strong>' + data.tips.split(':').slice(1).join(':') + '</div>';
-    html += '<div class="footer">Training Exercise Library &mdash; Powered by Schneider Saddlery &mdash; sstack.com</div>';
+    html += '<div class="footer">Training Exercise Library &mdash; Powered by <a href="https://www.sstack.com">Schneider Saddlery</a> &mdash; Trusted since 1948</div>';
     html += '</body></html>';
 
     var printWin = window.open('', '_blank');
@@ -210,8 +212,17 @@
     });
 
     if (printBtnEl) {
+      // Print is gated behind email capture per Kevin's 5/26 touchbase.
+      // Hide it until we have an email, but also defend against being
+      // un-hidden by some other code path: if clicked without an email,
+      // open the modal and queue printExercise() for after submission.
       if (!emailCaptured) printBtnEl.style.display = 'none';
       printBtnEl.addEventListener('click', function () {
+        if (!emailCaptured) {
+          pendingAction = 'print';
+          modal.classList.add('active');
+          return;
+        }
         printExercise();
       });
     }

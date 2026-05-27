@@ -1,6 +1,6 @@
 /* ============================================================
    TrainingExerciseLibrary.com - Main JavaScript
-   Part of the Schneider Saddlery Equine Network
+   Part of Schneiders EQ
    ============================================================ */
 
 (function () {
@@ -37,7 +37,41 @@
     bindFAQ();
     bindSubmitForm();
     bindEmailCTA();
+    primeFiltersFromURL();
     loadMeta();
+  }
+
+  /* -----------------------------------------------------------
+     Prime filter selects + search from ?discipline=... etc.
+     Enables shareable deep-links into a filtered view from any
+     page (e.g. footer links, blog articles, marketing emails).
+     ----------------------------------------------------------- */
+  function primeFiltersFromURL() {
+    if (typeof URLSearchParams === 'undefined') return;
+    var params = new URLSearchParams(window.location.search);
+    var map = {
+      discipline: 'filterDiscipline',
+      level: 'filterLevel',
+      focus: 'filterFocus',
+      time: 'filterTime',
+      q: 'searchInput'
+    };
+    Object.keys(map).forEach(function (key) {
+      var val = params.get(key);
+      if (!val) return;
+      var el = document.getElementById(map[key]);
+      if (!el) return;
+      if (el.tagName === 'SELECT') {
+        for (var i = 0; i < el.options.length; i++) {
+          if (el.options[i].value.toLowerCase() === val.toLowerCase()) {
+            el.selectedIndex = i;
+            break;
+          }
+        }
+      } else {
+        el.value = val;
+      }
+    });
   }
 
   /* -----------------------------------------------------------
@@ -52,10 +86,10 @@
       .then(function (res) { return res.json(); })
       .then(function (data) {
         allMeta = data;
-        filtered = allMeta.slice();
-        var info = document.getElementById('resultsInfo');
-        if (info) info.innerHTML = 'Showing <strong>' + Math.min(PER_PAGE, filtered.length) + '</strong> of ' + allMeta.length + ' exercises';
-        renderPage();
+        // applyFilters() respects any URL-primed filter values (set in
+        // primeFiltersFromURL during init) so deep-links land on the
+        // correct filtered view.
+        applyFilters();
       })
       .catch(function () {
         grid.innerHTML = '<div class="no-results"><h3>Unable to load exercises</h3><p>Please refresh the page.</p></div>';
@@ -134,24 +168,27 @@
   }
 
   function buildExerciseEmailHTML(ex) {
-    var html = '<h2 style="color:#1B2A4A;margin-bottom:8px;">' + ex.title + '</h2>';
+    // Brand palette: navy #002848 (headlines), red #c00000 (links/CTAs),
+    // cream #f8f3ec (tip callout background). All inline because email
+    // clients strip <style>.
+    var html = '<h2 style="color:#002848;margin-bottom:8px;">' + ex.title + '</h2>';
     html += '<p style="color:#6B6B6B;margin-bottom:16px;"><strong>Discipline:</strong> ' + ex.discipline + ' &nbsp;|&nbsp; <strong>Level:</strong> ' + ex.level.charAt(0).toUpperCase() + ex.level.slice(1) + ' &nbsp;|&nbsp; <strong>Time:</strong> ' + ex.time + ' min</p>';
     html += '<p style="margin-bottom:4px;"><strong>Focus:</strong> ' + ex.focus.join(', ') + '</p>';
     html += '<p style="color:#6B6B6B;margin-bottom:20px;"><strong>Equipment:</strong> ' + ex.equipment.join(', ') + '</p>';
-    html += '<h3 style="color:#2D5A3D;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Step-by-Step Instructions</h3><ol style="padding-left:20px;margin-bottom:20px;">';
+    html += '<h3 style="color:#002848;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Step-by-Step Instructions</h3><ol style="padding-left:20px;margin-bottom:20px;">';
     ex.steps.forEach(function (s) { html += '<li style="margin-bottom:6px;">' + s + '</li>'; });
     html += '</ol>';
-    html += '<h3 style="color:#2D5A3D;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Common Mistakes to Avoid</h3><ul style="padding-left:20px;margin-bottom:20px;">';
+    html += '<h3 style="color:#002848;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Common Mistakes to Avoid</h3><ul style="padding-left:20px;margin-bottom:20px;">';
     ex.mistakes.forEach(function (m) { html += '<li style="margin-bottom:4px;">' + m + '</li>'; });
     html += '</ul>';
-    html += '<h3 style="color:#2D5A3D;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Variations &amp; Progressions</h3><ul style="padding-left:20px;margin-bottom:20px;">';
+    html += '<h3 style="color:#002848;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Variations &amp; Progressions</h3><ul style="padding-left:20px;margin-bottom:20px;">';
     ex.variations.forEach(function (v) { html += '<li style="margin-bottom:4px;">' + v + '</li>'; });
     html += '</ul>';
-    html += '<div style="background:#E8F0EB;padding:14px 16px;border-left:4px solid #2D5A3D;margin-bottom:20px;"><strong style="color:#1E3F2B;">' + ex.tips.split(':')[0] + ':</strong>' + ex.tips.split(':').slice(1).join(':') + '</div>';
+    html += '<div style="background:#f8f3ec;padding:14px 16px;border-left:4px solid #002848;margin-bottom:20px;"><strong style="color:#002848;">' + ex.tips.split(':')[0] + ':</strong>' + ex.tips.split(':').slice(1).join(':') + '</div>';
     if (ex.equipmentLinks && ex.equipmentLinks.length) {
-      html += '<h3 style="color:#2D5A3D;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Shop Equipment at sstack.com</h3><p>';
+      html += '<h3 style="color:#002848;font-size:14px;text-transform:uppercase;letter-spacing:0.5px;">Shop Equipment at sstack.com</h3><p>';
       ex.equipmentLinks.forEach(function (l) {
-        html += '<a href="' + l.url + '" style="color:#2D5A3D;margin-right:12px;">' + l.name + ' &rarr;</a>';
+        html += '<a href="' + l.url + '" style="color:#c00000;margin-right:12px;font-weight:600;">' + l.name + ' &rarr;</a>';
       });
       html += '</p>';
     }
@@ -719,6 +756,12 @@
 
   /* -----------------------------------------------------------
      Submit Exercise Form
+
+     Submissions now route to Klaviyo as an "Exercise Submission
+     Received" metric event so the editorial team can review them
+     inside Klaviyo and so a thank-you / follow-up flow can fire
+     automatically. We still write to localStorage for resilience
+     and POST to window.TEL_EMAIL_ENDPOINT when one is configured.
      ----------------------------------------------------------- */
   function bindSubmitForm() {
     var form = document.getElementById('submitExerciseForm');
@@ -740,6 +783,11 @@
       submissions.push(data);
       localStorage.setItem('tel_submissions', JSON.stringify(submissions));
 
+      if (data.email) {
+        subscribeToKlaviyo(data.email, data.name, 'exercise_submission');
+        trackSubmissionEvent(data);
+      }
+
       if (window.TEL_EMAIL_ENDPOINT) {
         fetch(window.TEL_EMAIL_ENDPOINT, {
           method: 'POST',
@@ -751,6 +799,38 @@
       form.style.display = 'none';
       document.querySelector('.submit-success').classList.add('show');
       showToast('Exercise submitted! Thank you for contributing.', 'success');
+    });
+  }
+
+  function trackSubmissionEvent(data) {
+    if (!KLAVIYO_COMPANY_ID) return Promise.resolve();
+    var payload = {
+      data: {
+        type: 'event',
+        attributes: {
+          properties: {
+            submitted_title: data.exerciseTitle,
+            discipline: data.discipline,
+            level: data.level,
+            description: data.description,
+            submitter_name: data.name,
+            submitted_at: data.timestamp
+          },
+          metric: {
+            data: { type: 'metric', attributes: { name: 'Exercise Submission Received' } }
+          },
+          profile: {
+            data: { type: 'profile', attributes: { email: data.email } }
+          }
+        }
+      }
+    };
+    return fetch('https://a.klaviyo.com/client/events/?company_id=' + KLAVIYO_COMPANY_ID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
+      body: JSON.stringify(payload)
+    }).catch(function (err) {
+      console.error('[Klaviyo] Submission event error:', err);
     });
   }
 
